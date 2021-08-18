@@ -60,9 +60,14 @@ def show_madlib():
     noun = request.args.get("noun")
     person = request.args.get("person")
     adjective = request.args.get("adjective")
+    locations = request.args.getlist("location")
+    location_string = ""
+    for location in locations:
+        location_string += location + " "
+    location_string = location_string.rstrip()
 
     return render_template("madlib.html", 
-    color=color, noun=noun, person=person, adjective=adjective)
+    color=color, noun=noun, person=person, adjective=adjective, location=location_string)
 
 
 
